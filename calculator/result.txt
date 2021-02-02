@@ -1,0 +1,30 @@
+server:
+
+ddas_09@dexter:~/Desktop/Kalpavriksha/networking/calculator$ ./calcServer
+Listening for incoming connections.....
+Client connected @IP: 127.0.0.1 and port: 39498
+Command recieved from client = add 5 6
+Command recieved from client = Sub 40 3
+Command recieved from client = MUL 8 9
+Command recieved from client = DIV 55 3
+Command recieved from client = abc 5
+ALl done!
+
+client:
+
+ddas_09@dexter:~/Desktop/Kalpavriksha/networking/calculator$ ./calcClient
+Connected with server @IP: 127.0.0.1 and port: 3000
+Enter 'END' to stop sending.
+Enter command: add 5 6
+Result recieved from server: 11
+Enter command: Sub 40 3
+Result recieved from server: 37
+Enter command: MUL 8 9
+Result recieved from server: 72
+Enter command: DIV 55 3
+Result recieved from server: 18.33
+Enter command: abc 5
+Result recieved from server: Invalid command
+Enter command: END
+All done!
+
