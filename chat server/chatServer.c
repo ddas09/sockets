@@ -25,7 +25,7 @@ void error(char *msg);
 
 int main(int argc, char const *argv[])
 {
-    //#1 Create socket
+    // Create socket
     int server_sock = socket(AF_INET, SOCK_STREAM, 0);
     if (server_sock == -1)
     {
@@ -38,41 +38,46 @@ int main(int argc, char const *argv[])
     server_addr.sin_port = htons(PORT);
     inet_pton(AF_INET, IP, &server_addr.sin_addr);
 
-    //#2 Bind to the set port and IP:
-    if (bind(server_sock, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0){
+    // Bind to the set port and IP:
+    if (bind(server_sock, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0)
+    {
         error("Couldn't bind to specified port and IP");
     }
 
-    //#3 Listen for clients
-    if(listen(server_sock, 1) < 0){
+    // Listen for clients
+    if(listen(server_sock, 1) < 0)
+    {
         error("Error while listening\n");
     }
     printf("Listening for incoming connections.....\n");
     
-    //#4 Accept an incoming connection:
+    // Accept an incoming connection:
     struct sockaddr_in client_addr;
     int client_len = sizeof(client_addr);
     res_socket = accept(server_sock, (struct sockaddr*)&client_addr, &client_len);
-    if (res_socket < 0){
+    if (res_socket < 0)
+    {
         error("Can't accept");
     }
     printf("Client connected @IP: %s and port: %i\n", inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port));
     printf("Enter 'END' to stop sending.\n");
 
-    //#5 Create thread for sending and recieving messages
+    // Create thread for sending and recieving messages
     pthread_t recvThread, sendThread;
-    if (pthread_create(&recvThread, NULL, recvMessage, NULL) != 0){
+    if (pthread_create(&recvThread, NULL, recvMessage, NULL) != 0)
+    {
         error("Thread creation failed");
     }
-    if (pthread_create(&sendThread, NULL, sendMessage, NULL) != 0){
+    if (pthread_create(&sendThread, NULL, sendMessage, NULL) != 0)
+    {
         error("Thread creation failed");
     }
 
-    //wait for all the threads
+    // wait for all the threads
     pthread_join(recvThread, NULL);  
     pthread_join(sendThread, NULL);
 
-    //#6 Close sockets
+    // Close sockets
     close(res_socket);
     close(server_sock);
     printf("ALl done!\n");
@@ -90,7 +95,8 @@ void *sendMessage(void *arg)
     while (strncmp(sendBuf, "END", 3))
     {
         fgets(sendBuf, BUFFER_SIZE, stdin);
-        if (send(res_socket, sendBuf, strlen(sendBuf), 0) < 0){
+        if (send(res_socket, sendBuf, strlen(sendBuf), 0) < 0)
+        {
             error("Couldn't send message");
         }
     }
@@ -103,8 +109,9 @@ void *recvMessage(void *arg)
     int msglen = 0;
     while (strncmp(sendBuf, "END", 3))
     {
-        msglen = recv(res_socket, recvBuf, sizeof(recvBuf), 0);
-        if (msglen < 0){
+        msglen = recv(res_socket, recvBuf, BUFFER_SIZE, 0);
+        if (msglen < 0)
+        {
             error("Couldn't receive message");
         } 
         if (strncmp(recvBuf, "END", 3) == 0)
