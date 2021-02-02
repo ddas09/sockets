@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*server ip and port number*/
 #define PORT 3000
 #define IP "127.0.0.1"
 #define BUFFER_SIZE 1024

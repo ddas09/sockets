@@ -8,8 +8,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*client ip and port number*/
 #define PORT 3000
-#define IP "127.0.0.1"
+#define IP "127.0.0.1"  
 #define BUFFER_SIZE 1024
 
 //buffers for sending and recieving message
