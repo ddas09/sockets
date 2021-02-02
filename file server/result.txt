@@ -1,0 +1,189 @@
+# sending text file
+
+server:
+ddas_09@dexter:~/Desktop/Kalpavriksha/networking/file server$ time ./fileServer test.txt
+Listening for incoming connections.....
+Client connected @IP: 127.0.0.1 and port: 39422
+Packet sent, size = 53 bytes.
+All packets sent, waiting for client to complete.
+File sent successfully, file size = 53 bytes.
+ALl done!
+
+real	0m0.508s
+user	0m0.001s
+sys	0m0.002s
+
+client:
+ddas_09@dexter:~/Desktop/Kalpavriksha/networking/file server$ time ./fileClient
+Connected with server @IP: 127.0.0.1 and port: 3000
+Packet recieved, size = 53 bytes.
+All packets recieved, informing server.
+File recieved successfully, file size = 53 bytes.
+All done!
+
+real	0m0.011s
+user	0m0.000s
+sys	0m0.002s
+
+# sending image
+
+server:
+ddas_09@dexter:~/Desktop/Kalpavriksha/networking/file server$ time ./fileServer DSCN0010.JPG
+Listening for incoming connections.....
+Client connected @IP: 127.0.0.1 and port: 39434
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 31747 bytes.
+All packets sent, waiting for client to complete.
+File sent successfully, file size = 3177427 bytes.
+ALl done!
+
+real	0m0.431s
+user	0m0.007s
+sys	0m0.000s
+
+client:
+ddas_09@dexter:~/Desktop/Kalpavriksha/networking/file server$ time ./fileClient
+Connected with server @IP: 127.0.0.1 and port: 3000
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 31747 bytes.
+All packets recieved, informing server.
+File recieved successfully, file size = 3177427 bytes.
+All done!
+
+real	0m0.016s
+user	0m0.005s
+sys	0m0.004s
+
+#sending a video
+
+server:
+ddas_09@dexter:~/Desktop/Kalpavriksha/networking/file server$ time ./fileServer Sql_tutorial.mp4
+Listening for incoming connections.....
+Client connected @IP: 127.0.0.1 and port: 39416
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+...
+Packet sent, size = 65535 bytes.
+Packet sent, size = 65535 bytes.
+Packet sent, size = 19970 bytes.
+All packets sent, waiting for client to complete.
+File sent successfully, file size = 839850995 bytes.
+ALl done!
+
+real	0m9.681s
+user	0m0.176s
+sys	0m0.980s
+
+client:
+ddas_09@dexter:~/Desktop/Kalpavriksha/networking/file server$ time ./fileClient
+Connected with server @IP: 127.0.0.1 and port: 3000
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+...
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 65535 bytes.
+Packet recieved, size = 19970 bytes.
+All packets recieved, informing server.
+File recieved successfully, file size = 839850995 bytes.
+All done!
+
+real	0m9.386s
+user	0m0.132s
+sys	0m1.693s
+
