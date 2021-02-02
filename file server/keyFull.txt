@@ -1,0 +1,6 @@
+This file is for generating a unique key for semaphore.
+
+@key_t ftok(char *path, int proj_id)
+
+# see manual of ftok() for more details.
+
