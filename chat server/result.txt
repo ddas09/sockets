@@ -1,0 +1,31 @@
+Server side:
+
+ddas_09@dexter:~/Desktop/Kalpavriksha/networking/chat server$ ./chatServer
+Listening for incoming connections.....
+Client connected @IP: 127.0.0.1 and port: 39368
+Enter 'END' to stop sending.
+Hi
+what's up?
+Recieved: I'm fine, thanks.
+Recieved: How are you?
+All good man 
+Closed recieving end.
+END
+Closed sending end.
+ALl done!
+
+Client side:
+
+ddas_09@dexter:~/Desktop/Kalpavriksha/networking/chat server$ ./chatClient
+Connected with server @IP: 127.0.0.1 and port: 3000
+Enter 'END' to stop sending.
+Recieved: Hi
+Recieved: what's up?
+I'm fine, thanks.
+How are you?
+Recieved: All good man
+END
+Closed sending end.
+Closed recieving end.
+All done!
+
