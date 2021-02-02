@@ -79,8 +79,8 @@ int main(int argc, char const *argv[])
     printf("Client connected @IP: %s and port: %i\n", inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port));
 
     //create key for semaphores
-    key_t key_full = ftok("/home/ddas_09/Desktop/Kalpavriksha/networking/keyFull.txt", 9);
-    key_t key_empty = ftok("/home/ddas_09/Desktop/Kalpavriksha/networking/keyEmpty.txt", 9);
+    key_t key_full = ftok("./keyFull.txt", 9);
+    key_t key_empty = ftok("./keyEmpty.txt", 9);
     if (key_full == -1 || key_empty == -1)
     {
         error("Couldn't generate key for semaphore");
@@ -133,6 +133,7 @@ void fileSend(const char *filename, FILE *fp, int socket)
 
     //send file data
     int items = 0;
+    long file_size = 0;
     while (1)
     {
         if (semop(emptyBuf, &wait, 1) == -1)
@@ -163,6 +164,7 @@ void fileSend(const char *filename, FILE *fp, int socket)
             error("Couldn't send data");
         }
         printf("Packet sent, size = %d bytes.\n", items);
+        file_size += items;
         memset(buffer, '\0', items);
 
         if (semop(fullBuf, &signal, 1) == -1)
@@ -170,6 +172,7 @@ void fileSend(const char *filename, FILE *fp, int socket)
             error("Failed to signal");
         }
     }
+
     printf("All packets sent, waiting for client to complete.\n");
     //wait for client to complete
     if (recv(socket, buffer, 3, 0) < 0)
@@ -180,7 +183,7 @@ void fileSend(const char *filename, FILE *fp, int socket)
     {
         error("Sync Error");
     }    
-    printf("File sent successfully.\n");
+    printf("File sent successfully, file size = %ld bytes.\n", file_size);
 }
 
 void error(char *msg)
