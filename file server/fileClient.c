@@ -50,8 +50,8 @@ int main(int argc, char const *argv[])
     printf("Connected with server @IP: %s and port: %i\n", inet_ntoa(server_addr.sin_addr), ntohs(server_addr.sin_port));
 
     //create key for semaphores
-    key_t key_full = ftok("/home/ddas_09/Desktop/Kalpavriksha/networking/keyFull.txt", 9);
-    key_t key_empty = ftok("/home/ddas_09/Desktop/Kalpavriksha/networking/keyEmpty.txt", 9);
+    key_t key_full = ftok("./keyFull.txt", 9);
+    key_t key_empty = ftok("./keyEmpty.txt", 9);
     if (key_full == -1 || key_empty == -1)
     {
         error("Couldn't generate key for semaphore");
@@ -77,22 +77,27 @@ int main(int argc, char const *argv[])
 
 void fileRecieve(int socket)
 {
-    //recieve file name 
+    //recieve source file name 
     if (recv(socket, buffer, BUFFER_SIZE, 0) < 0)
     {
         error("Failed to recieve filename");
     }    
 
+    //prefix dest file name
+    char filename[100] = "dest_";
+    strcat(filename, buffer);
+
     //create dest file
-    FILE *fp = fopen(buffer, "wb");
+    FILE *fp = fopen(filename, "wb");
     if (fp == NULL)
     {
         error("Failed to create destination file");
     }    
     memset(buffer, '\0', strlen(buffer));
 
-    //recieve and write dat to dest file
+    //recieve and write data to dest file
     int items = 0;
+    long file_size = 0;
     while (1)
     {
         if (semop(emptyBuf, &signal, 1) == -1)
@@ -115,10 +120,13 @@ void fileRecieve(int socket)
             break;
         }
         printf("Packet recieved, size = %d bytes.\n", items);
+        file_size += items;
+
         //write to file
-        int temp = fwrite(buffer, 1, items, fp);
+        fwrite(buffer, 1, items, fp);
         memset(buffer, '\0', items);
     } 
+
     printf("All packets recieved, informing server.\n");
     //inform server
     if (send(socket, "END", 3, 0) < 0)
@@ -126,7 +134,7 @@ void fileRecieve(int socket)
         error("Couldn't send data");
     }
     fclose(fp);
-    printf("File recieved successfully.\n");   
+    printf("File recieved successfully, file size = %ld bytes.\n", file_size);   
 }
 
 void error(char *msg)
