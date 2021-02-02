@@ -11,7 +11,7 @@
 
 #define PORT 3000
 #define IP "127.0.0.1"
-#define BUFFER_SIZE 65535 //65KB buffer
+#define BUFFER_SIZE 65535 //65kb buffer
 
 //buffer for sending file data
 char buffer[BUFFER_SIZE];
